@@ -1,0 +1,183 @@
+{
+  "text": null,
+  "intent": null,
+  "intentScore": null,
+  "intentFlow": null,
+  "slots": {},
+  "nlu": {
+    "intentMapperResults": {
+      "finalIntentName": null,
+      "finalIntentScore": null,
+      "finalIntentNegated": false,
+      "finalIntentConfirmationSentence": null,
+      "finalIntentDisambiguationSentence": null,
+      "highestFlow": null,
+      "intentPath": [],
+      "intentPathIds": [],
+      "intentPathFlowReferenceIds": [],
+      "scores": []
+    },
+    "intentFlow": null,
+    "uniqueIntentFlowId": null,
+    "intentId": null,
+    "uniqueIntentId": null,
+    "detailedSlots": {},
+    "tokens": [],
+    "yesNoIntentResults": {
+      "finalIntentName": null,
+      "finalIntentScore": null,
+      "scores": []
+    }
+  },
+  "mode": "DataOnly",
+  "type": "Statement",
+  "intentOutOfState": null,
+  "currentTime": {
+    "year": 2025,
+    "month": 6,
+    "day": 4,
+    "hour": 10,
+    "minute": 13,
+    "second": 19,
+    "milliseconds": 665,
+    "weekday": 3,
+    "dayOfWeek": "Wednesday",
+    "ISODate": "2025-06-04T10:13:19+02:00",
+    "plain": "June 4, 2025 10:13 AM",
+    "grain": "second",
+    "timezoneOffset": "Europe/Berlin"
+  },
+  "language": "en-US",
+  "ip": "217.110.9.58",
+  "hashedIp": "b7dcf1fd3643ab63494570dfeab3741bc19f7e9c",
+  "state": "default",
+  "channel": "webchat-client",
+  "endpointType": "webchat2",
+  "entrypoint": "623c697cab03288394f7528a",
+  "userId": "fb78fe03-422f-4070-bb67-038182ec2e3d",
+  "inputId": "305bee53-db54-4b4b-84fb-766ea764095d",
+  "sessionId": "session-3e87ee31-6af0-4e6c-9d34-8ec94fd59c9c",
+  "flowName": "9 Store Locator",
+  "URLToken": "47207109799e0fc1d3869b47a637ede3a66602be9c5a9c0a19cbeb9a5fd5b1cb",
+  "frustration": 0,
+  "completedGoals": [],
+  "execution": 4,
+  "traceId": "endpoint-realtimeProcessInput-9af213f6-66a3-41a3-aee9-fc73c581705a",
+  "apps": {
+    "session": {
+      "token": "",
+      "pin": ""
+    },
+    "customization": {},
+    "baseUrl": "https://static-app.cognigy.ai",
+    "url": ""
+  },
+  "understood": false,
+  "data": {
+    "location": {
+      "latitude": 51.246333112357966,
+      "longitude": 6.77031730812859
+    }
+  },
+  "attachments": [],
+  "intentLevel": {
+    "level1": null,
+    "level2": null,
+    "level3": null
+  },
+  "localeId": "3b389377-501a-4dd2-bac0-d1e37ab01484",
+  "conditionalEntrypointWasExecuted": false,
+  "location_response": {
+    "length": 1,
+    "result": {
+      "k_nearest_stores": [
+        {
+          "store_name": "Cosmo Prof",
+          "education_store_name": "COSMO PROF ",
+          "address": {
+            "street": "6420 West Colonial Dr",
+            "city": "Orlando",
+            "state_code": "FL",
+            "zip_code": "32818"
+          },
+          "phone_number": "407-522-0267",
+          "website_url": "http://cosmoprofbeauty.com/",
+          "education_website_url": "https://www.cosmoprofbeauty.com/education",
+          "position": {
+            "latitude": 28.551359,
+            "longitude": -81.470035
+          }
+        },
+        {
+          "store_name": "Cosmo Prof",
+          "education_store_name": "COSMO PROF ",
+          "address": {
+            "street": "4426 Curry Ford Road #12",
+            "city": "Orlando",
+            "state_code": "FL",
+            "zip_code": "32825"
+          },
+          "phone_number": "407-382-4750",
+          "website_url": "http://cosmoprofbeauty.com/",
+          "education_website_url": "https://www.cosmoprofbeauty.com/education",
+          "position": {
+            "latitude": 28.521911,
+            "longitude": -81.328983
+          }
+        },
+        {
+          "store_name": "Cosmo Prof",
+          "education_store_name": "COSMO PROF ",
+          "address": {
+            "street": "8956 Turkey Lake Rd#B-900",
+            "city": "Orlando",
+            "state_code": "FL",
+            "zip_code": "32819"
+          },
+          "phone_number": "407-345-9908",
+          "website_url": "http://cosmoprofbeauty.com/",
+          "education_website_url": "https://www.cosmoprofbeauty.com/education",
+          "position": {
+            "latitude": 28.443794,
+            "longitude": -81.475767
+          }
+        },
+        {
+          "store_name": "Cosmo Prof",
+          "education_store_name": "COSMO PROF ",
+          "address": {
+            "street": "6824-6828 Aloma Ave",
+            "city": "Winter Park",
+            "state_code": "FL",
+            "zip_code": "32792"
+          },
+          "phone_number": "407-673-1350",
+          "website_url": "http://cosmoprofbeauty.com/",
+          "education_website_url": "https://www.cosmoprofbeauty.com/education",
+          "position": {
+            "latitude": 28.605372,
+            "longitude": -81.297208
+          }
+        },
+        {
+          "store_name": "Cosmo Prof",
+          "education_store_name": "COSMO PROF ",
+          "address": {
+            "street": "380 Sermoran Commerce Pl",
+            "city": "Apopka",
+            "state_code": "FL",
+            "zip_code": "32703"
+          },
+          "phone_number": "407-884-0010",
+          "website_url": "http://cosmoprofbeauty.com/",
+          "education_website_url": "https://www.cosmoprofbeauty.com/education",
+          "position": {
+            "latitude": 28.673691,
+            "longitude": -81.479669
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
