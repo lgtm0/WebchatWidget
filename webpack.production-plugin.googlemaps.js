@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require('webpack');
-const version = "0.2.4"
+const version = "0.2.7"
 
 const config = require('./webpack.config');
 

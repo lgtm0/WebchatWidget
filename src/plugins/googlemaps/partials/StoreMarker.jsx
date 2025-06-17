@@ -40,16 +40,26 @@ const style = {
   fontSize: 14,
   fontWeight: 600,
   padding: '4px',
-  textAlign: 'center'
+  textAlign: 'center',
+  pointerEvents: 'auto' // <-- wichtig für Klicks auf Marker
 };
 
 
 
 // Marker
 const StoreMarker = ({ id, name, phone, address, website, educationsite, show, onClick}) => {
+    // Verhindert, dass die Map beim Klick auf den Marker gezogen wird
+    const handleMouseDown = (e) => {
+      e.stopPropagation();
+    };
+
     return (
         <>
-        <div style={style} onClick={onClick}></div>
+        <div
+          style={style}
+          onClick={onClick}
+          onMouseDown={handleMouseDown}
+        ></div>
         {show && <StoreFlyout place={{ id: id, name: name, phone: phone, website: website, educationsite: educationsite, address: address }} />}
       </>
     );

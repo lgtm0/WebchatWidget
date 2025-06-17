@@ -13,9 +13,11 @@ const GoogleMapsWithMarkers = (props) => {
     const { data, text } = props.message;
     const { center, zoom, apikey, markers } = props.message.data._plugin;
     
+    // State für aktiven Marker
+    const [activeMarker, setActiveMarker] = React.useState(null);
+
     const onChildClickCallback = (key) => {
-        console.log("Marker clicked: ", key);
-        markers[key].show = !markers[key].show;
+        setActiveMarker(key === activeMarker ? null : key);
     }
 
     return (
@@ -41,8 +43,8 @@ const GoogleMapsWithMarkers = (props) => {
                 address={marker.address}
                 website={marker.website}
                 educationsite={marker.educationsite}
-                show={marker.show}
-                onClick={onChildClickCallback(index)}
+                show={activeMarker === index}
+                onClick={() => onChildClickCallback(index)}
                 />
             ))}
             </GoogleMapReact>
