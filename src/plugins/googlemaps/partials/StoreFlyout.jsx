@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // PopUp Window
 const StoreFlyout = (props) => {
@@ -24,6 +24,23 @@ const StoreFlyout = (props) => {
   const phoneNumber = place.phone ? "+1"+place.phone.replace(/\D/g, '') : '';
   const phoneLink = phoneNumber ? `tel:${phoneNumber}` : '#';
 
+  const [copied, setCopied] = useState(false);
+
+  const fullAddress = [
+    place.address.street || '',
+    `${place.address.city || ''}, ${place.address.state_code || ''}, ${place.address.zip_code || ''}`
+  ].join('\n');
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(fullAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (e) {
+      // Fehlerbehandlung optional
+    }
+  };
+
   return (
     <div style={storeFlyoutStyle}>
       <div style={{ fontSize: 14, fontWeight: 'bold', color: 'black' }}>
@@ -33,7 +50,26 @@ const StoreFlyout = (props) => {
         <a style={{color: 'grey'}} href={phoneLink || '#'}>{place.phone || '' }</a>
       </div>
       <div style={infoData}>
-        Address:<br/>{place.address.street || ''}<br/>{place.address.city || ''}, {place.address.state_code || ''}, {place.address.zip_code || ''}
+        Address:
+        <br />
+        {place.address.street || ''}
+        <br />
+        {place.address.city || ''}, {place.address.state_code || ''}, {place.address.zip_code || ''}
+        <button
+          style={{
+            marginLeft: 5,
+            fontSize: 10,
+            padding: '2px 6px',
+            cursor: 'pointer',
+            borderRadius: 3,
+            border: '1px solid #ccc',
+            background: copied ? '#e0ffe0' : '#f9f9f9'
+          }}
+          onClick={handleCopy}
+          title="Copy address"
+        >
+          {copied ? '✓' : 'Copy'}
+        </button>
       </div>
       <div style={infoData}>
         <a style={{color: 'grey'}} href={place.website || '#'} target="_blank" rel="noopener noreferrer">
