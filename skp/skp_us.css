@@ -1,0 +1,139 @@
+[data-cognigy-webchat-root] a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+[data-cognigy-webchat-root] .nowrap {
+    white-space: nowrap;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-avatar.user {
+    background-image: url("https://s3.eu-central-1.amazonaws.com/henkel-cognigy/webchat/avatar_20x20.png");
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat {
+    font-family: "Trade Gothic LT Std Bold Regular", Arial, sans-serif;
+    box-shadow: 0 5px 18px 0 rgba(151, 124, 156, 0.2), 0 5px 32px 0 rgba(203, 195, 212, 0.2), 0 8px 58px 0 rgba(216, 212, 221, 0.1);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-title {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-logo {
+    background-image: url("https://henkel-cognigy.s3.eu-central-1.amazonaws.com/skp/us/skp_header.png");
+    margin-left: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-bar {
+    background: rgb(113, 110, 173);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+[data-cognigy-webchat-root] .webchat-input-menu-form[data-active="true"] {
+    border-bottom-color: rgb(113, 110, 173);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .regular-message.bot {
+    background: rgb(113, 110, 173);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .regular-message.bot a {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-quick-reply-template-header-message {
+    background: rgb(113, 110, 173);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-quick-reply-template-reply {
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-buttons-template-header {
+    background: rgb(113, 110, 173);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-buttons-template-button {
+    color: rgb(113, 110, 173);
+    border-color: rgb(113, 110, 173);
+}
+
+[data-cognigy-webchat-root] .webchat-input-menu-form[data-active="true"] {
+    border-bottom-color: rgb(113, 110, 173);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-typing-indicator {
+    background: rgb(113, 110, 173);
+    color: rgba(255, 255, 255, 0.95);
+    box-sizing: content-box;
+}
+
+[data-cognigy-webchat-root] .cognigy-webchat-zr2qrn {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button {
+    border: 1px solid white;
+    animation: bot-shadow-pulse 2s linear infinite, bot-button-pulse 2s linear infinite;
+    background: rgb(113, 110, 173);
+    //background-image: url("https://henkel-cognigy.s3.eu-central-1.amazonaws.com/loctite/LoctiteFinalFiles_PNG_Loctite_CharlieBotAvatar.png");
+    //background-size: cover;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button svg {
+    display: none;
+}
+
+[data-cognigy-webchat-root] .carousel.carousel-slider .control-arrow {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button[aria-label="Close chat"] {
+    background-image: none;
+    background: rgb(113, 110, 173);
+    border: 2px solid white;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button[aria-label="Close chat"] svg {
+    display: block;
+}
+
+@keyframes bot-shadow-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(113, 110, 173, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 0 25px rgba(113, 110, 173, 0);
+    }
+}
+
+@keyframes bot-button-pulse {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1.15);
+    }
+    60% {
+        transform: scale(1.25);
+    }
+    80% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
