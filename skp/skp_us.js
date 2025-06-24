@@ -2,6 +2,8 @@ var myWebchat = {
 
     showBotButtonOnlyPages: ['html'],
     botOpenPages: [],
+    autoOpenDelay: 5000, // 5 seconds delay for auto-opening
+    hasAutoOpened: false, // Track if the bot has been auto-opened in this session
 
     // config stuff
     webchatEndpoint: "https://endpoint-app.cognigy.ai/47207109799e0fc1d3869b47a637ede3a66602be9c5a9c0a19cbeb9a5fd5b1cb",
@@ -59,6 +61,17 @@ var myWebchat = {
             initWebchat(this.webchatEndpoint, this.configObject).then(function (webchat) {
                 that.webChat = webchat;
                 that.adjust();
+                
+                // Set up auto-open functionality
+                if (!that.hasAutoOpened && !that.openBot()) {
+                    setTimeout(function() {
+                        // Check if the chat is already open before trying to open it
+                        if (that.webChat && !document.querySelector('[data-cognigy-webchat-root] [data-cognigy-webchat].webchat.webchat--open')) {
+                            that.webChat.open();
+                            that.hasAutoOpened = true;
+                        }
+                    }, that.autoOpenDelay);
+                }
             });
         }
     },
@@ -132,17 +145,29 @@ var myWebchat = {
                 }
             }
             if (event.type === "webchat/open") {
+                // Set hasAutoOpened to true whenever chat is opened
+                that.hasAutoOpened = true;
+                
                 // scroll links needs to be added again after new open
                 setTimeout(function () {
                     that.addScrollListener();
                 }, 1000);
             }
             if (event.type === "webchat/close") {
+                // We're keeping hasAutoOpened as true even after close
+                // If you want the auto-open to happen again after manual close, uncomment:
+                // that.hasAutoOpened = false;
             }
         });
         if (this.openBot()) {
             this.webChat.open();
+            this.hasAutoOpened = true;
         }
+    },
+    
+    // Optional: Method to reset the auto-open flag (if you want to allow auto-open again)
+    resetAutoOpen: function() {
+        this.hasAutoOpened = false;
     }
 };
 
