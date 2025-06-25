@@ -102,12 +102,21 @@
     color: white;
 }
 
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button:hover {
+    color: white !important;
+}
+
 [data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button::before {
     content: "WHERE TO BUY";
     display: block;
     font-size: 12px;
     font-family: "Trade Gothic LT Std Bold Regular", Arial, sans-serif;
     white-space: nowrap;
+    color: white;
+}
+
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button:hover::before {
+    color: white;
 }
 
 [data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button svg {
