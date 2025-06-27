@@ -12,7 +12,7 @@ var myWebchat = {
         settings: {
             userAvatarUrl: "https://s3.eu-central-1.amazonaws.com/henkel-cognigy/webchat/avatar_20x20.png",
             disableBranding: true,
-            title: "Schwarzkopf Pro Shop Finder"
+            title: "Find a Store Near You"
         }
     },
     webChat: null, // holds the webchat reference
