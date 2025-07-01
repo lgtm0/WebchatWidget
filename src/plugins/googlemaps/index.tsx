@@ -20,12 +20,17 @@ const GoogleMapsWithMarkers = (props) => {
         setActiveMarker(key === activeMarker ? null : key);
     }
 
+    const onMapClick = () => {
+        setActiveMarker(null);
+    }
+
     return (
         <div style={{ height: '320px', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: apikey }}
                 defaultCenter={center}
                 defaultZoom={zoom}
+                onClick={onMapClick}
                 >
                 <CenterMarker
                     name={center.name}
@@ -45,6 +50,7 @@ const GoogleMapsWithMarkers = (props) => {
                 educationsite={marker.educationsite}
                 show={activeMarker === index}
                 onClick={() => onChildClickCallback(index)}
+                onClose={() => setActiveMarker(null)}
                 />
             ))}
             </GoogleMapReact>

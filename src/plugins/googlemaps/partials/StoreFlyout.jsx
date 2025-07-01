@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // PopUp Window
 const StoreFlyout = (props) => {
-  const { place } = props;
+  const { place, onClose } = props;
   const storeFlyoutStyle = {
     position: 'relative',
     bottom: 120,
@@ -43,8 +43,33 @@ const StoreFlyout = (props) => {
 
   return (
     <div style={storeFlyoutStyle}>
-      <div style={{ fontSize: 14, fontWeight: 'bold', color: 'black' }}>
-        {place.name}
+      <div style={{ position: 'relative', marginBottom: 5 }}>
+        <div style={{ fontSize: 14, fontWeight: 'bold', color: 'black', paddingRight: 20 }}>
+          {place.name}
+        </div>
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: -2,
+            right: -2,
+            width: 18,
+            height: 18,
+            border: 'none',
+            background: '#ccc',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            fontSize: 12,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#333',
+            fontWeight: 'bold'
+          }}
+          title="Close"
+        >
+          ×
+        </button>
       </div>
       <div style={infoData}>
         <a style={{color: 'grey'}} href={phoneLink || '#'}>{place.phone || '' }</a>
