@@ -13,7 +13,7 @@ const StoreFlyout = (props) => {
     boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
     padding: 10,
     fontSize: 10,
-    zIndex: 100,
+    zIndex: 1001, // Höher als Marker für Vollbildmodus
   };
   const infoData = {
     margin: '3px 0',

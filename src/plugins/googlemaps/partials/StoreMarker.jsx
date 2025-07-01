@@ -41,36 +41,47 @@ const style = {
   fontWeight: 600,
   padding: '4px',
   textAlign: 'center',
-  pointerEvents: 'auto' // <-- wichtig für Klicks auf Marker
+  pointerEvents: 'auto', // <-- wichtig für Klicks auf Marker
+  zIndex: 1000, // Höherer z-Index für Vollbildmodus
+  cursor: 'pointer' // Zeigt an, dass der Marker klickbar ist
 };
 
 
 
 // Marker
-const StoreMarker = ({ id, name, phone, address, website, educationsite, show, onClick}) => {
+const StoreMarker = ({ id, name, phone, address, website, educationsite, show, onClick, onClose}) => {
     // Verhindert, dass die Map beim Klick auf den Marker gezogen wird
     const handleMouseDown = (e) => {
       e.stopPropagation();
+    };
+
+    const handleClick = (e) => {
+      e.stopPropagation();
+      if (onClick) {
+        onClick();
+      }
     };
 
     return (
         <>
         <div
           style={style}
-          onClick={onClick}
+          onClick={handleClick}
           onMouseDown={handleMouseDown}
         ></div>
-        {show && <StoreFlyout place={{ id: id, name: name, phone: phone, website: website, educationsite: educationsite, address: address }} />}
+        {show && <StoreFlyout place={{ id: id, name: name, phone: phone, website: website, educationsite: educationsite, address: address }} onClose={onClose} />}
       </>
     );
 };
 
 StoreMarker.defaultProps = {
   onClick: null,
+  onClose: null,
 };
 
 StoreMarker.propTypes = {
   onClick: PropTypes.func,
+  onClose: PropTypes.func,
   name: PropTypes.string.isRequired,
 };
 
