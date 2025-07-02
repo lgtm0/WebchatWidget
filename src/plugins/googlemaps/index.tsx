@@ -24,6 +24,67 @@ const GoogleMapsWithMarkers = (props) => {
         setActiveMarker(null);
     }
 
+    const mapOptions = {
+        clickableIcons: false, // Verhindert Klicks auf POI (Points of Interest)
+        disableDefaultUI: false, // Behält Standard UI-Elemente
+        styles: [
+            {
+                featureType: "poi",
+                stylers: [
+                    { visibility: "off" } // Versteckt alle POI komplett
+                ]
+            },
+            {
+                featureType: "poi.business",
+                stylers: [
+                    { visibility: "off" } // Versteckt Business POI
+                ]
+            },
+            {
+                featureType: "poi.attraction",
+                stylers: [
+                    { visibility: "off" } // Versteckt Attraktionen
+                ]
+            },
+            {
+                featureType: "poi.government",
+                stylers: [
+                    { visibility: "off" } // Versteckt Regierungsgebäude
+                ]
+            },
+            {
+                featureType: "poi.medical",
+                stylers: [
+                    { visibility: "off" } // Versteckt medizinische Einrichtungen
+                ]
+            },
+            {
+                featureType: "poi.park",
+                stylers: [
+                    { visibility: "off" } // Versteckt Parks
+                ]
+            },
+            {
+                featureType: "poi.place_of_worship",
+                stylers: [
+                    { visibility: "off" } // Versteckt Gotteshäuser
+                ]
+            },
+            {
+                featureType: "poi.school",
+                stylers: [
+                    { visibility: "off" } // Versteckt Schulen
+                ]
+            },
+            {
+                featureType: "poi.sports_complex",
+                stylers: [
+                    { visibility: "off" } // Versteckt Sportkomplexe
+                ]
+            }
+        ]
+    };
+
     return (
         <div style={{ height: '320px', width: '100%' }}>
             <GoogleMapReact
@@ -31,6 +92,7 @@ const GoogleMapsWithMarkers = (props) => {
                 defaultCenter={center}
                 defaultZoom={zoom}
                 onClick={onMapClick}
+                options={mapOptions}
                 >
                 <CenterMarker
                     name={center.name}
