@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   backgroundSize: cover;
   backgroundRepeat: no-repeat;
   backgroundPosition: center;
-  backgroundImage: url(https://henkel-cognigy.s3.eu-central-1.amazonaws.com/plugins/googlemaps/map-marker.png);
+  backgroundImage: url(https://sthkhcbgptstorage.blob.core.windows.net/public/plugins/googlemaps/map-marker.png);
   color: black;
   fontSize: 14px;
   fontWeight: 600;
