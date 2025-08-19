@@ -3,15 +3,22 @@ var myWebchat = {
     showBotButtonOnlyPages: ['html'],
     botOpenPages: [],
     autoOpenDelay: 5000, // 5 seconds delay for auto-opening
-    hasAutoOpened: false, // Track if the bot has been auto-opened in this session
+    hasAutoOpened: function() {
+        const lastOpened = localStorage.getItem('webchat_auto_opened_time');
+        const daysSinceLastOpen = lastOpened ? (Date.now() - parseInt(lastOpened)) / (1000 * 60 * 60 * 24) : 999;
+        return daysSinceLastOpen < 1; // Auto-open again after 1 day
+    }(), // Track if the bot has been auto-opened within the last day
 
     // config stuff
-    webchatEndpoint: "https://endpoint-app.cognigy.ai/47207109799e0fc1d3869b47a637ede3a66602be9c5a9c0a19cbeb9a5fd5b1cb",
+    webchatEndpoint: "https://endpoint-app.cognigy.ai/25e8a851549b7e069970f7525dd602970f1e91ad752a2f5a83a7e9e2383c9e2a",
 
     configObject: {
         settings: {
             userAvatarUrl: "https://s3.eu-central-1.amazonaws.com/henkel-cognigy/webchat/avatar_20x20.png",
-            disableBranding: true,
+            disableBranding: false,
+            enableCustomBranding: true,
+            customBrandingTitle: "Schwarzkopf Professional USA may retain this chat. For more information, see our Privacy Policy.",
+            customBrandingURL: "https://www.henkel-northamerica.com/privacy-statement-na",
             title: "Find a Store Near You"
         }
     },
@@ -38,8 +45,8 @@ var myWebchat = {
         const that = this;
 
         const pluginsToLoad = [
-            ...(["https://henkel-cognigy.s3.eu-central-1.amazonaws.com/plugins/googlemaps/location.webchat-plugin.js"]),
-            ...(["https://cai.aleri-cloud.de/skp/us/src/googlemaps.webchat-plugin.js"]),
+            ...(["https://sthkhcbgptstorage.blob.core.windows.net/public/plugins/googlemaps/location.webchat-plugin.js"]),
+            ...(["https://sthkhcbgptstorage.blob.core.windows.net/public/plugins/googlemaps/googlemaps.webchat-plugin.js"]),
 //           ...(["https://henkel-cognigy.s3.eu-central-1.amazonaws.com/plugins/googlemaps/googlemaps.webchat-plugin.js"]),
          ];// link(s) to plugin source(s)
         if (pluginsToLoad) {
@@ -69,6 +76,7 @@ var myWebchat = {
                         if (that.webChat && !document.querySelector('[data-cognigy-webchat-root] [data-cognigy-webchat].webchat.webchat--open')) {
                             that.webChat.open();
                             that.hasAutoOpened = true;
+                            localStorage.setItem('webchat_auto_opened_time', Date.now().toString());
                         }
                     }, that.autoOpenDelay);
                 }
@@ -147,6 +155,7 @@ var myWebchat = {
             if (event.type === "webchat/open") {
                 // Set hasAutoOpened to true whenever chat is opened
                 that.hasAutoOpened = true;
+                localStorage.setItem('webchat_auto_opened_time', Date.now().toString());
                 
                 // scroll links needs to be added again after new open
                 setTimeout(function () {
@@ -162,12 +171,14 @@ var myWebchat = {
         if (this.openBot()) {
             this.webChat.open();
             this.hasAutoOpened = true;
+            localStorage.setItem('webchat_auto_opened_time', Date.now().toString());
         }
     },
     
     // Optional: Method to reset the auto-open flag (if you want to allow auto-open again)
     resetAutoOpen: function() {
         this.hasAutoOpened = false;
+        localStorage.removeItem('webchat_auto_opened_time');
     }
 };
 
