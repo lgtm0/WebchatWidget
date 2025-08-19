@@ -4,10 +4,19 @@ var myWebchat = {
     botOpenPages: [],
     autoOpenDelay: 5000, // 5 seconds delay for auto-opening
     hasAutoOpened: function() {
-        const lastOpened = localStorage.getItem('webchat_auto_opened_time');
-        const daysSinceLastOpen = lastOpened ? (Date.now() - parseInt(lastOpened)) / (1000 * 60 * 60 * 24) : 999;
-        return daysSinceLastOpen < 1; // Auto-open again after 1 day
-    }(), // Track if the bot has been auto-opened within the last day
+        // Check if this is a new browser session
+        const isNewBrowserSession = !sessionStorage.getItem('webchat_session_started');
+        
+        if (isNewBrowserSession) {
+            // Mark this session as started
+            sessionStorage.setItem('webchat_session_started', 'true');
+            // Reset auto-open for new browser session
+            return false;
+        }
+        
+        // If not a new session, check if already auto-opened in this session
+        return sessionStorage.getItem('webchat_auto_opened_this_session') === 'true';
+    }(), // Track if the bot has been auto-opened in this browser session
 
     // config stuff
     webchatEndpoint: "https://endpoint-app.cognigy.ai/25e8a851549b7e069970f7525dd602970f1e91ad752a2f5a83a7e9e2383c9e2a",
@@ -76,7 +85,7 @@ var myWebchat = {
                         if (that.webChat && !document.querySelector('[data-cognigy-webchat-root] [data-cognigy-webchat].webchat.webchat--open')) {
                             that.webChat.open();
                             that.hasAutoOpened = true;
-                            localStorage.setItem('webchat_auto_opened_time', Date.now().toString());
+                            sessionStorage.setItem('webchat_auto_opened_this_session', 'true');
                         }
                     }, that.autoOpenDelay);
                 }
@@ -155,7 +164,7 @@ var myWebchat = {
             if (event.type === "webchat/open") {
                 // Set hasAutoOpened to true whenever chat is opened
                 that.hasAutoOpened = true;
-                localStorage.setItem('webchat_auto_opened_time', Date.now().toString());
+                sessionStorage.setItem('webchat_auto_opened_this_session', 'true');
                 
                 // scroll links needs to be added again after new open
                 setTimeout(function () {
@@ -171,14 +180,15 @@ var myWebchat = {
         if (this.openBot()) {
             this.webChat.open();
             this.hasAutoOpened = true;
-            localStorage.setItem('webchat_auto_opened_time', Date.now().toString());
+            sessionStorage.setItem('webchat_auto_opened_this_session', 'true');
         }
     },
     
     // Optional: Method to reset the auto-open flag (if you want to allow auto-open again)
     resetAutoOpen: function() {
         this.hasAutoOpened = false;
-        localStorage.removeItem('webchat_auto_opened_time');
+        sessionStorage.removeItem('webchat_auto_opened_this_session');
+        sessionStorage.removeItem('webchat_session_started');
     }
 };
 
